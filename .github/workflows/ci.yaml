@@ -14,8 +14,12 @@ jobs:
     - uses: actions/setup-python@v4
       with:
         python-version: 3.11
-        # setup-cml@v2
     - uses: iterative/setup-cml@v2
+
+    - name: Debug Information
+      run: |
+        echo "REPO_TOKEN: $REPO_TOKEN"
+        env
 
     - name: Install Dependencies
       run: |
@@ -32,7 +36,7 @@ jobs:
 
     - name: Create CML report
       env: 
-        REPO_TOKEN: ${{ secrets.MY_GITHUB_REPO }}
+        REPO_TOKEN: ${{ secrets.MY_REPO }}
       run: |
 
         echo "# First Line of our report" >> report.md
@@ -41,12 +45,10 @@ jobs:
         echo "## line Plots >>" report.md
         echo '![](./lines.png "Bar plot")' >> report.md
 
-
         cml comment create report.md
     
     # here we have added a debug level
-    - name: Debug Information
-      run: |
-        
-        echo "REPO_TOKEN: $REPO_TOKEN"
-        env
+    #- name: Debug Information
+    #  run: |   
+    #    echo "REPO_TOKEN: $REPO_TOKEN"
+    #    env
