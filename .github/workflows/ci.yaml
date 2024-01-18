@@ -14,7 +14,8 @@ jobs:
     - uses: actions/setup-python@v4
       with:
         python-version: 3.11
-    - uses: iterative/setup-cml@v2
+        # setup-cml@v2
+    - uses: iterative/setup-cml@v2.0.2
 
     - name: Install Dependencies
       run: |
@@ -42,3 +43,10 @@ jobs:
 
 
         cml comment create report.md
+    
+    # here we have added a debug level
+    - name: Debug Information
+      run: |
+        
+        echo "REPO_TOKEN: $REPO_TOKEN"
+        env
