@@ -15,7 +15,7 @@ jobs:
       with:
         python-version: 3.11
         # setup-cml@v2
-    - uses: iterative/setup-cml@v2.0.2
+    - uses: iterative/setup-cml@v2
 
     - name: Install Dependencies
       run: |
